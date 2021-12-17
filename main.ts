@@ -1,3 +1,11 @@
+function Gryffindor_and_Slytherin () {
+    Coin_Flip = randint(1, 2)
+    if (Coin_Flip == 1) {
+        Gryffindor()
+    } else if (Coin_Flip == 2) {
+        Slytherin()
+    }
+}
 function Question_7 () {
     Question = Question + 1
     basic.showString("Question 7")
@@ -22,6 +30,22 @@ function Question_3 () {
     basic.showString("B. Botony")
     basic.showString("A+B. Defense Against the Dark Arts")
 }
+function Gryffindor_and_Hufflepuff () {
+    Coin_Flip = randint(1, 2)
+    if (Coin_Flip == 1) {
+        Gryffindor()
+    } else if (Coin_Flip == 2) {
+        Hufflepuff()
+    }
+}
+function Gryffindor_and_Ravenclaw () {
+    Coin_Flip = randint(1, 2)
+    if (Coin_Flip == 1) {
+        Gryffindor()
+    } else if (Coin_Flip == 2) {
+        Ravenclaw()
+    }
+}
 input.onButtonPressed(Button.A, function () {
     if (OnOff == 0) {
     	
@@ -45,6 +69,14 @@ input.onButtonPressed(Button.A, function () {
         }
     }
 })
+function Ravenclaw_and_hufflepuff () {
+    Coin_Flip = randint(1, 2)
+    if (Coin_Flip == 1) {
+        Ravenclaw()
+    } else if (Coin_Flip == 2) {
+        Hufflepuff()
+    }
+}
 function Gryffindor () {
     if (Response == 0) {
         basic.showString("You belong in Gryffindor")
@@ -63,6 +95,14 @@ function Question_1 () {
     basic.showString("A. Lion")
     basic.showString("B. Snake")
     basic.showString("A+B. Raven")
+}
+function Slytherin_and_Ravenclaw () {
+    Coin_Flip = randint(1, 2)
+    if (Coin_Flip == 1) {
+        Slytherin()
+    } else if (Coin_Flip == 2) {
+        Ravenclaw()
+    }
 }
 input.onButtonPressed(Button.AB, function () {
     if (OnOff == 0) {
@@ -136,6 +176,14 @@ function Question_4 () {
     basic.showString("B. Expelliarmus")
     basic.showString("A+B. Avada Kadavra")
 }
+function Slytherin_and_Hufflepuff () {
+    Coin_Flip = randint(1, 2)
+    if (Coin_Flip == 1) {
+        Slytherin()
+    } else if (Coin_Flip == 2) {
+        Hufflepuff()
+    }
+}
 function Hufflepuff () {
     if (Response == 0) {
         basic.showString("You belong in Hufflepuff")
@@ -178,15 +226,22 @@ function Question_2 () {
     basic.showString("A+B. Cedric")
 }
 let Response = 0
-let Hufflepuff_Points = 0
 let Ravenclaw_Points = 0
 let Slytherin_Points = 0
+let Hufflepuff_Points = 0
 let Gryffindor_Points = 0
+let Coin_Flip = 0
 let Question = 0
 let OnOff = 0
 basic.showString("Press A+B to begin")
 OnOff = 0
 Question = 0
+Coin_Flip = 0
+Gryffindor_Points = 0
+Hufflepuff_Points = 0
+Slytherin_Points = 0
+Ravenclaw_Points = 0
+Response = 0
 basic.forever(function () {
     if (OnOff == 0) {
     	
@@ -201,7 +256,27 @@ basic.forever(function () {
             Question_7()
             Question_8()
         } else if (Question == 9) {
-        	
+            if (Gryffindor_Points > Slytherin_Points && Gryffindor_Points > Ravenclaw_Points && Gryffindor_Points > Hufflepuff_Points) {
+                Gryffindor()
+            } else if (Hufflepuff_Points > Slytherin_Points && Hufflepuff_Points > Ravenclaw_Points && Hufflepuff_Points > Gryffindor_Points) {
+                Hufflepuff()
+            } else if (Ravenclaw_Points > Slytherin_Points && Ravenclaw_Points > Gryffindor_Points && Ravenclaw_Points > Hufflepuff_Points) {
+                Ravenclaw()
+            } else if (Slytherin_Points > Gryffindor_Points && Slytherin_Points > Ravenclaw_Points && Slytherin_Points > Hufflepuff_Points) {
+                Slytherin()
+            } else if (Gryffindor_Points == Slytherin_Points && (Gryffindor_Points > Ravenclaw_Points && Gryffindor_Points > Hufflepuff_Points && (Slytherin_Points > Ravenclaw_Points && Slytherin_Points > Hufflepuff_Points))) {
+                Gryffindor_and_Slytherin()
+            } else if (Gryffindor_Points == Hufflepuff_Points && (Gryffindor_Points > Ravenclaw_Points && Gryffindor_Points > Slytherin_Points && (Hufflepuff_Points > Ravenclaw_Points && Hufflepuff_Points > Slytherin_Points))) {
+                Gryffindor_and_Hufflepuff()
+            } else if (Gryffindor_Points == Ravenclaw_Points && (Gryffindor_Points > Hufflepuff_Points && Gryffindor_Points > Slytherin_Points && (Ravenclaw_Points > Hufflepuff_Points && Ravenclaw_Points > Slytherin_Points))) {
+                Gryffindor_and_Ravenclaw()
+            } else if (Slytherin_Points == Hufflepuff_Points && (Slytherin_Points > Gryffindor_Points && Slytherin_Points > Ravenclaw_Points && (Hufflepuff_Points > Ravenclaw_Points && Hufflepuff_Points > Gryffindor_Points))) {
+                Slytherin_and_Hufflepuff()
+            } else if (Slytherin_Points == Ravenclaw_Points && (Slytherin_Points > Hufflepuff_Points && Slytherin_Points > Gryffindor_Points && (Ravenclaw_Points > Hufflepuff_Points && Ravenclaw_Points > Gryffindor_Points))) {
+                Slytherin_and_Ravenclaw()
+            } else if (Ravenclaw_Points == Hufflepuff_Points && (Ravenclaw_Points > Gryffindor_Points && Ravenclaw_Points > Slytherin_Points && (Hufflepuff_Points > Slytherin_Points && Hufflepuff_Points > Gryffindor_Points))) {
+                Ravenclaw_and_hufflepuff()
+            }
         }
     }
 })
